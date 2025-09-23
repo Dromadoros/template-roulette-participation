@@ -1,0 +1,91 @@
+// === GABBY ROULETTE GAME PAGE ===
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.gabby-game {
+    @include roulette-container;
+
+    &__content {
+        background-image: var(--bg-image);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        justify-content: center;
+        padding: $spacing-md;
+        padding-top: $spacing-2xl;
+        padding-bottom: $spacing-2xl * 2;
+
+        @media (min-width: $desktop) {
+        background-size: contain;
+        }
+    }
+
+    &__main {
+        @include roulette-centered-content;
+
+        .logo {
+            margin-bottom: 0;
+        }
+    }
+
+    @keyframes levitate {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    &__wheel-container {
+        @include roulette-wheel-container;
+
+        .roulette-play-button {
+            @include roulette-play-button;
+
+            img {
+                width: auto;
+                height: auto;
+                margin: auto;
+                text-align: center;
+                width: 100%;
+                z-index: 3;
+                position: relative;
+            }
+
+            img.roulette-pointer {
+                position: absolute;
+                top: 33%;
+                left: 50%;
+                width: 50%;
+                transform: translate(-50%, -60%);
+                z-index: 1;
+            }
+        }
+
+        .roulette-wheel {
+            @include roulette-wheel;
+            position: relative;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+                position: relative;
+            }
+        }
+    }
+
+    &__characters {
+        position: absolute;
+        bottom: -100px;
+        z-index: 10;
+        width: 400px;
+    }
+}

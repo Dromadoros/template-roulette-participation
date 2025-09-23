@@ -1,0 +1,71 @@
+// === GABBY ROULETTE GAME STYLES ===
+
+@use 'styles/variables' as *;
+@use 'styles/mixins';
+@use 'styles/components/footer';
+@use 'styles/pages/home';
+@use 'styles/pages/game';
+@use 'styles/pages/win';
+@use 'styles/pages/lose';
+@use 'styles/pages/rules';
+
+// Fonts
+@font-face {
+  font-family: 'Burbank Big Condensed';
+  src: url('/fonts/BurbankBigCondensed-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Bold.ttf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Base styles
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Burbank Big Condensed', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  background: transparent;
+  border: none;
+}
+
+
+.logo {
+    margin-bottom: $spacing-xl;
+    animation: levitate 3s ease infinite;
+
+    img {
+        margin: 0 auto;
+        height: auto;
+        width: 100%;
+    }
+}

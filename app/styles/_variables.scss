@@ -1,0 +1,44 @@
+// === GABBY ROULETTE GAME VARIABLES ===
+
+// Brand Colors
+$gabby-primary: #FF0189;
+$gabby-primary-dark: #e00075;
+$gabby-secondary: #6B56AA;
+$gabby-accent: #facc15;
+$gabby-bg: #f9fafb;
+$gabby-white: #ffffff;
+$gabby-gray-light: #F5F5F5;
+$gabby-gray: #6b7280;
+
+// Typography
+$font-primary: 'Burbank Big Condensed', Arial, Helvetica, sans-serif;
+$font-secondary: 'Montserrat', Arial, Helvetica, sans-serif;
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 0.75rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+
+// Border Radius
+$radius-sm: 0.5rem;
+$radius-md: 1rem;
+$radius-lg: 2rem;
+$radius-xl: 3rem;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+// Transitions
+$transition-fast: 0.2s ease-in-out;
+$transition-normal: 0.3s ease-in-out;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$large: 1280px;

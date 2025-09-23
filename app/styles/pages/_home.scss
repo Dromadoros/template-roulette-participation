@@ -1,0 +1,56 @@
+// === GABBY ROULETTE HOMEPAGE ===
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.gabby-home {
+  @include roulette-container;
+  
+  &__content {
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include roulette-page-content;
+    height: 80vh;
+
+    @media (min-width: $desktop) {
+      height: 90vh;
+      background-size: contain;
+    }
+  }
+  
+  &__main {
+    @include roulette-centered-content;
+  }
+  
+  &__logo {
+    margin-bottom: $spacing-xl;
+    
+    img {
+      margin: 0 auto;
+    }
+  }
+  
+  &__title {
+    @include gabby-title;
+    font-size: 1.5625rem;
+    text-transform: uppercase;
+    
+    @include tablet {
+      font-size: 3.75rem;
+    }
+
+    @media (min-width: $desktop) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  &__start-button {
+    @include gabby-button-primary;
+    @include gabby-button-large;
+    width: 192px;
+    font-size: 1.5625rem;
+    margin-top: $spacing-xl;
+  }
+}

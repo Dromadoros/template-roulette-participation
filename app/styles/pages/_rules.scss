@@ -1,0 +1,67 @@
+// === GABBY ROULETTE RULES PAGE ===
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.gabby-rules {
+  @include roulette-container;
+  
+  &__content {
+    @include roulette-page-content;
+    padding: $spacing-xl;
+  }
+  
+  &__main {
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+  
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-2xl;
+  }
+  
+  &__title {
+    @include gabby-title;
+  }
+  
+  &__subtitle {
+    @include gabby-subtitle;
+  }
+  
+  &__content-card {
+    @include roulette-card;
+    margin-bottom: $spacing-xl;
+  }
+  
+  &__section {
+    margin-bottom: $spacing-lg;
+  }
+  
+  &__section-title {
+    font-family: $font-primary;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $gabby-secondary;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &__list {
+    list-style: disc;
+    list-style-position: inside;
+    color: $gabby-secondary;
+    
+    li {
+      margin-bottom: $spacing-xs;
+      font-family: $font-primary;
+    }
+  }
+  
+  &__back-button {
+    @include gabby-button-primary;
+    font-size: 1.125rem;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
+}

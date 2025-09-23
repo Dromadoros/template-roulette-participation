@@ -1,0 +1,74 @@
+// === GABBY ROULETTE FOOTER COMPONENT ===
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.gabby-footer {
+  position: relative;
+  z-index: 20;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  @media (min-width: $desktop) {
+    min-height: 10vh;
+  }
+  
+  &__overlay {
+    position: absolute;
+    inset: 0;
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 10;
+    padding: $spacing-lg $spacing-xl;
+  }
+  
+  &__container {
+    max-width: 72rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+  
+  &__link {
+    font-family: $font-secondary;
+    color: $gabby-white;
+    text-decoration: underline;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: color $transition-fast;
+    
+    &:hover {
+      color: #fde047; // yellow-300
+    }
+  }
+  
+  &__separator {
+    color: $gabby-white;
+  }
+  
+  &__copyright {
+    font-family: $font-secondary;
+    color: $gabby-white;
+    font-size: 0.75rem;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    
+    @include tablet {
+      text-align: right;
+    }
+  }
+}

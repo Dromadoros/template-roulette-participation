@@ -1,0 +1,223 @@
+// === GABBY ROULETTE GAME MIXINS ===
+
+@use 'variables' as *;
+
+// Layout mixins
+@mixin roulette-container {
+  background-color: $gabby-bg;
+  overflow: hidden;
+}
+
+@mixin roulette-page-content {
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  padding-top: $spacing-2xl * 2;
+}
+
+@mixin roulette-centered-content {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto;
+
+  @media (min-width: $desktop) {
+    max-width: 26rem;
+  }
+}
+
+// Button mixins
+@mixin gabby-button-primary {
+  padding: $spacing-md $spacing-xl;
+  margin-top: $spacing-2xl;
+  display: inline-block;
+  background-color: $gabby-primary;
+  color: $gabby-white;
+  text-decoration: none;
+  border-radius: $radius-sm;
+  font-family: $font-primary;
+  font-weight: 500;
+  transition: all $transition-fast;
+  border: none;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: $gabby-primary-dark;
+    transform: scale(1.05);
+  }
+}
+
+// Button mixins
+@mixin gabby-button-submit {
+  display: inherit;
+  padding: $spacing-md $spacing-xl;
+  background-color: $gabby-primary;
+  color: $gabby-white;
+  text-decoration: none;
+  border-radius: $radius-xl;
+  text-transform: uppercase;
+  font-family: $font-primary;
+  font-weight: 500;
+  transition: all $transition-fast;
+  border: none;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: $gabby-primary-dark;
+    transform: scale(1.05);
+  }
+}
+
+@mixin gabby-button-secondary {
+  display: inline-block;
+  padding: $spacing-md $spacing-xl;
+  background-color: transparent;
+  color: $gabby-secondary;
+  border: 1px solid $gabby-gray-light;
+  text-decoration: none;
+  border-radius: $radius-sm;
+  font-family: $font-primary;
+  font-weight: 500;
+  transition: all $transition-fast;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: $gabby-gray-light;
+  }
+}
+
+@mixin gabby-button-large {
+  padding: $spacing-md $spacing-2xl;
+  font-size: 1.5rem;
+  border-radius: $radius-xl;
+  border: 3px solid $gabby-white;
+}
+
+// Card mixins
+@mixin roulette-card {
+  background: $gabby-white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  padding: $spacing-xl;
+  padding-bottom: 100px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+// Form mixins
+@mixin roulette-input {
+  width: 100%;
+  padding: $spacing-sm;
+  border: 1px solid $gabby-gray-light;
+  border-radius: $radius-sm;
+  font-family: $font-primary;
+  background-color: $gabby-gray-light;
+  position: relative;
+  z-index: 2;
+  
+  &:focus {
+    outline: none;
+    border-color: $gabby-primary;
+    box-shadow: 0 0 0 3px rgba(255, 1, 137, 0.1);
+  }
+}
+
+// Game specific mixins
+@mixin roulette-wheel-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+@mixin roulette-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  z-index: 10;
+  transition: transform $transition-fast, opacity $transition-fast;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  
+  &:hover:not(.spinning):not(:disabled) {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  
+  &.spinning,
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  &:disabled img {
+    filter: grayscale(50%);
+  }
+}
+
+@mixin roulette-wheel {
+  width: 100%;
+  height: auto;
+  transition-timing-function: cubic-bezier(0.41, 1.04, 0.86, 1.003);
+  
+  &.spinning {
+    transition-property: transform;
+    transition-duration: var(--spin-duration, 5000ms);
+  }
+}
+
+// Typography mixins
+@mixin gabby-title {
+  font-family: $font-primary;
+  font-weight: bold;
+  color: $gabby-secondary;
+  font-size: 2.25rem;
+  margin-bottom: $spacing-xs;
+  padding: 0 $spacing-xs;
+  
+  @media (min-width: $tablet) {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
+
+@mixin gabby-subtitle {
+  font-family: $font-primary;
+  color: $gabby-secondary;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  line-height: 1rem;
+  margin-bottom: $spacing-md;
+  
+  @media (min-width: $tablet) {
+    font-size: 1.25rem;
+  }
+}
+
+// Responsive mixins
+@mixin mobile {
+  @media (max-width: #{$mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: $large) {
+    @content;
+  }
+}

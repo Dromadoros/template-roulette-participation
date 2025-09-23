@@ -1,0 +1,122 @@
+// === GABBY ROULETTE WIN PAGE ===
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.gabby-win {
+  @include roulette-container;
+
+  &__content {
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include roulette-page-content;
+    padding: $spacing-xl;
+    overflow: hidden;
+
+    @media (min-width: $desktop) {
+      background-size: contain;
+    }
+  }
+
+  &__main {
+    @include roulette-centered-content;
+  }
+
+  &__icon {
+    margin-bottom: $spacing-xl;
+    z-index: 1;
+    margin: 0 auto;
+    width: 200px;
+    position: absolute;
+    bottom: -100px;
+    right: -25px;
+  }
+
+  &__title {
+    @include gabby-title;
+    color: $gabby-primary;
+  }
+
+  &__description {
+    @include gabby-subtitle;
+  }
+
+  &__form {
+    @include roulette-card;
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  &__form-title {
+    font-family: $font-primary;
+    font-size: 1rem;
+    color: $gabby-secondary;
+    margin-bottom: $spacing-lg;
+    text-align: left;
+    ;
+  }
+
+  &__form-group {
+    margin-bottom: $spacing-md;
+  }
+
+  &__label {
+    display: block;
+    text-align: left;
+    color: $gabby-secondary;
+    margin-bottom: $spacing-xs;
+    font-family: $font-primary;
+  }
+
+  &__input {
+    @include roulette-input;
+    font-size: 1.125rem;
+
+    &::placeholder {
+      color: $gabby-gray;
+    }
+  }
+
+  &__submit-button {
+    @include gabby-button-submit;
+    font-size: 1.125rem;
+  }
+
+  &__play-again {
+    @include gabby-button-secondary;
+  }
+
+  &__success {
+    @include roulette-centered-content;
+  }
+
+  &__success-title {
+    @include gabby-title;
+  }
+
+  &__success-description {
+    @include gabby-subtitle;
+  }
+
+  &__success-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  &__success-primary {
+    @include gabby-button-primary;
+    margin-right: $spacing-md;
+  }
+
+  &__success-secondary {
+    @include gabby-button-secondary;
+  }
+}

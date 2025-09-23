@@ -1,0 +1,102 @@
+// === GABBY ROULETTE LOSE PAGE ===
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.gabby-lose {
+  @include roulette-container;
+
+  &__content {
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include roulette-page-content;
+    padding: $spacing-xl;
+    overflow: hidden;
+
+    @media (min-width: $desktop) {
+      background-size: contain;
+    }
+  }
+
+  &__form {
+    @include roulette-card;
+    max-width: 28rem;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+  
+  &__main {
+    @include roulette-centered-content;
+  }
+  
+  &__icon {
+    margin-bottom: $spacing-xl;
+    
+    img {
+      margin: 0 auto;
+    }
+  }
+  
+  &__title {
+    @include gabby-title;
+    color: $gabby-primary;
+    text-transform: uppercase;
+  }
+  
+  &__description {
+    @include gabby-subtitle;
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+
+  .drawing-image {
+    width: 100%;
+    margin-bottom: $spacing-md;
+  }
+  
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    
+    @include tablet {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  
+  &__download {
+    @include gabby-button-submit;
+    font-size: 1.125rem;
+    width: 150px;
+    text-align: center;
+    margin: auto;
+  }
+
+  &__try-again {
+    @include gabby-button-primary;
+    font-size: 1.125rem;
+  }
+  
+  &__go-home {
+    @include gabby-button-secondary;
+    font-size: 1.125rem;
+  }
+  
+  &__encouragement {
+    margin-top: $spacing-2xl;
+    padding: $spacing-lg;
+    background: $gabby-white;
+    border-radius: $radius-sm;
+    box-shadow: $shadow-sm;
+    
+    p {
+      color: $gabby-secondary;
+      font-style: italic;
+      margin: 0;
+      font-family: $font-primary;
+    }
+  }
+}
