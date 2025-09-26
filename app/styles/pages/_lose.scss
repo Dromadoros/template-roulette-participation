@@ -16,7 +16,8 @@
     overflow: hidden;
 
     @media (min-width: $desktop) {
-      background-size: contain;
+      background-size: cover;
+      background-position: bottom center;
     }
   }
 

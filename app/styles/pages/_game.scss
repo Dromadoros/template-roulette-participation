@@ -18,7 +18,8 @@
         padding-bottom: $spacing-2xl * 2;
 
         @media (min-width: $desktop) {
-        background-size: contain;
+            background-size: cover;
+            background-position: bottom center;
         }
     }
 
@@ -87,5 +88,14 @@
         bottom: -100px;
         z-index: 10;
         width: 400px;
+        
+
+        @media (min-width: $desktop) {
+            margin: auto;
+            left: 0;
+            right: 0;
+            bottom: -130px;
+            width: 470px;
+        }
     }
 }

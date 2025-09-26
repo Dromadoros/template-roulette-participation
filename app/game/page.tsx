@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { settings } from "@/lib/settings";
 import Footer from "@/components/Footer";
 
@@ -10,15 +10,46 @@ export default function GamePage() {
   const router = useRouter();
   const [isSpinning, setIsSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
+  
+  // Audio references
+  const spinningAudioRef = useRef<HTMLAudioElement | null>(null);
+  const revealAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Initialize audio elements
+  useEffect(() => {
+    spinningAudioRef.current = new Audio(settings.audio.spinningWheel);
+    revealAudioRef.current = new Audio(settings.audio.reveal);
+    
+    // Preload audio files
+    spinningAudioRef.current.preload = 'auto';
+    revealAudioRef.current.preload = 'auto';
+    
+    // Cleanup function
+    return () => {
+      if (spinningAudioRef.current) {
+        spinningAudioRef.current.pause();
+        spinningAudioRef.current = null;
+      }
+      if (revealAudioRef.current) {
+        revealAudioRef.current.pause();
+        revealAudioRef.current = null;
+      }
+    };
+  }, []);
 
   const spinRoulette = () => {
     if (isSpinning) return;
 
     setIsSpinning(true);
 
+    // Play spinning sound
+    if (spinningAudioRef.current) {
+      spinningAudioRef.current.currentTime = 0;
+      spinningAudioRef.current.play().catch(console.error);
+    }
+
     // Determine win/lose based on probability
-    //const isWin = Math.random() < settings.game.winProbability;
-    const isWin = true;
+    const isWin = Math.random() < settings.game.winProbability;
 
     const randomizedSegments = Object.entries(settings.game.wheelSegments).sort(() => Math.random() - 0.5);
 
@@ -29,6 +60,15 @@ export default function GamePage() {
 
     // Keep button locked for the entire duration including navigation delay
     setTimeout(() => {
+      // Stop spinning sound and play reveal sound
+      if (spinningAudioRef.current) {
+        spinningAudioRef.current.pause();
+      }
+      if (revealAudioRef.current) {
+        revealAudioRef.current.currentTime = 0;
+        revealAudioRef.current.play().catch(console.error);
+      }
+      
       setTimeout(() => {
         router.push(isWin ? "/result/win" : "/result/lose");
       }, 1000);

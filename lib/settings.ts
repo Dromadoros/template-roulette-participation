@@ -107,6 +107,12 @@ export const settings = {
     drawingDownload: "/images/dessin-fail.png",
   },
 
+  // Audio files (paths to audio assets in /public/audio folder)
+  audio: {
+    spinningWheel: "/audio/spinning-wheel-slow.mp3",
+    reveal: "/audio/ding-reveal.wav",
+  },
+
   // Text Content
   content: {
     intro: {
