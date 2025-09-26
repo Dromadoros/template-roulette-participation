@@ -51,15 +51,6 @@ export default function WinPage() {
               />
             </div>
 
-            <div className={settings.classes.win.icon}>
-              <Image
-                src={settings.images.winIcon}
-                alt="Success"
-                width={120}
-                height={120}
-              />
-            </div>
-
             <h1 className={settings.classes.win.successTitle}>
               Thank You! 🎊
             </h1>
@@ -69,13 +60,6 @@ export default function WinPage() {
             </p>
 
             <div className={settings.classes.win.successButtons}>
-              <Link
-                href="/game"
-                className={settings.classes.win.successPrimary}
-              >
-                {settings.content.win.playAgainButton}
-              </Link>
-
               <Link
                 href="/"
                 className={settings.classes.win.successSecondary}
