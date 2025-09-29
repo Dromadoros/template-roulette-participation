@@ -3,10 +3,9 @@ import { DynamoDBDocumentClient, PutCommand, QueryCommand } from "@aws-sdk/lib-d
 import { v4 as uuidv4 } from 'uuid';
 
 // Initialize DynamoDB client
+// In Amplify, IAM role credentials are automatically available via the metadata service
 const client = new DynamoDBClient({
   region: process.env.REGION || 'eu-central-1',
-  // In production, credentials will be provided by Amplify/IAM roles
-  // In development, you might need to set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
 });
 
 const docClient = DynamoDBDocumentClient.from(client);

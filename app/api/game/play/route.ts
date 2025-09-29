@@ -3,6 +3,16 @@ import { saveGamePlay } from '@/lib/dynamodb';
 
 export async function POST(request: NextRequest) {
   try {
+    // Debug: Log environment variables
+    console.log('Environment debug:', {
+      NODE_ENV: process.env.NODE_ENV,
+      REGION: process.env.REGION,
+      DYNAMODB_GAME_DATA_TABLE: process.env.DYNAMODB_GAME_DATA_TABLE,
+      DYNAMODB_GAME_SESSIONS_TABLE: process.env.DYNAMODB_GAME_SESSIONS_TABLE,
+      // Log if any AWS-related env vars are present (but don't log the values for security)
+      hasAWSVars: Object.keys(process.env).filter(key => key.startsWith('AWS_')).length > 0,
+    });
+
     const body = await request.json();
     const { result, sessionId } = body;
 
