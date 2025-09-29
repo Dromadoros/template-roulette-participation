@@ -37,6 +37,7 @@
 
     &__wheel-container {
         @include roulette-wheel-container;
+        @include slide-in-from-center(0.8s, 0.1s, 0.8);
 
         .roulette-play-button {
             @include roulette-play-button;
@@ -80,7 +81,7 @@
         bottom: -100px;
         z-index: 10;
         width: 400px;
-        
+        @include slide-in-from-bottom(0.5s, 0.5s);
 
         @media (min-width: $desktop) {
             margin: auto;

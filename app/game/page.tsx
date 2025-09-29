@@ -126,7 +126,6 @@ export default function GamePage() {
     const finalRotation = (settings.game.numberOfSpins * 360) + (parseInt(String(choosenSegment)) * 60) + (Math.random() * 30 - 15);
     setRotation(finalRotation);
 
-    // Save game play to DynamoDB
     try {
       const response = await fetch('/api/game/play', {
         method: 'POST',

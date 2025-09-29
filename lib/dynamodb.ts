@@ -2,19 +2,6 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand, QueryCommand } from "@aws-sdk/lib-dynamodb";
 import { v4 as uuidv4 } from 'uuid';
 
-// Initialize DynamoDB client
-console.log('DynamoDB Client Debug - Full Environment:', {
-  region: process.env.REGION,
-  nodeEnv: process.env.NODE_ENV,
-  allEnvKeys: Object.keys(process.env).filter(key => 
-    key.includes('DYNAMO') || key.includes('ACCESS') || key.includes('SECRET') || key.includes('AWS')
-  ),
-  hasAccessKey: !!process.env.DYNAMO_ACCESS_KEY_ID,
-  hasSecretKey: !!process.env.DYNAMO_SECRET_ACCESS_KEY,
-  accessKeyValue: process.env.DYNAMO_ACCESS_KEY_ID ? `${process.env.DYNAMO_ACCESS_KEY_ID.substring(0, 8)}...` : 'undefined',
-  secretKeyValue: process.env.DYNAMO_SECRET_ACCESS_KEY ? `${process.env.DYNAMO_SECRET_ACCESS_KEY.substring(0, 8)}...` : 'undefined',
-});
-
 // Try to create credentials object manually and test it
 let credentials;
 if (process.env.DYNAMO_ACCESS_KEY_ID && process.env.DYNAMO_SECRET_ACCESS_KEY) {
@@ -22,10 +9,6 @@ if (process.env.DYNAMO_ACCESS_KEY_ID && process.env.DYNAMO_SECRET_ACCESS_KEY) {
     accessKeyId: process.env.DYNAMO_ACCESS_KEY_ID,
     secretAccessKey: process.env.DYNAMO_SECRET_ACCESS_KEY,
   };
-  console.log('Created credentials object:', {
-    accessKeyId: credentials.accessKeyId ? `${credentials.accessKeyId.substring(0, 8)}...` : 'missing',
-    secretAccessKey: credentials.secretAccessKey ? `${credentials.secretAccessKey.substring(0, 8)}...` : 'missing',
-  });
 } else {
   console.log('Missing credentials, will use default provider chain');
 }

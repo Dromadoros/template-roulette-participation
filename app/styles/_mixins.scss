@@ -115,6 +115,7 @@
   padding-bottom: 100px;
   position: relative;
   box-sizing: border-box;
+  @include slide-in-from-bottom(0.5s, 0.2s);
 }
 
 // Form mixins
@@ -207,6 +208,40 @@
   
   @media (min-width: $tablet) {
     font-size: 1.25rem;
+  }
+}
+
+// Animation mixins
+@mixin slide-in-from-bottom($duration: 0.8s, $delay: 0s, $distance: 30px) {
+  opacity: 0;
+  animation: slideInFromBottom $duration ease-out $delay forwards;
+  
+  @keyframes slideInFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY($distance);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// Animation mixins
+@mixin slide-in-from-center($duration: 0.8s, $delay: 0s, $scale: 0.7) {
+  opacity: 0;
+  animation: slideInFromCenter $duration cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay forwards;
+
+  @keyframes slideInFromCenter {
+    0% {
+      opacity: 0;
+      transform: scale($scale);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }
 
