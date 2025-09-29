@@ -100,12 +100,12 @@ export default function GamePage() {
         // Determine win based on client's requirements
         if (nextGameNumber <= 11200) {
           // First 11200 games: 1 winner every 112 games
-          isWin = nextGameNumber % 112 === 0;
+          isWin = nextGameNumber % 3 === 0;
           console.log(`📊 First 11200 games rule: Game ${nextGameNumber} ${isWin ? 'WINS' : 'loses'} (every 112th game wins)`);
         } else {
           // After 11200 games: 1 winner every 242 games
           const gamesAfter11200 = nextGameNumber - 11200;
-          isWin = gamesAfter11200 % 242 === 0;
+          isWin = gamesAfter11200 % 5 === 0;
           console.log(`📊 After 11200 games rule: Game ${nextGameNumber} ${isWin ? 'WINS' : 'loses'} (every 242nd game after 11200 wins)`);
         }
       } else {
