@@ -7,8 +7,19 @@
   position: relative;
   z-index: 20;
   background-size: cover;
-  background-position: center;
+  background-position: left center;
   background-repeat: no-repeat;
+  &::after {
+    content: '';
+    background: url('/images/border-footer-bg.png') left center;
+    display: block;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 10px;
+    position: absolute;
+    top: 0;
+  }
   @media (min-width: $desktop) {
     min-height: 10vh;
   }
@@ -41,7 +52,7 @@
   &__links {
     display: flex;
     align-items: center;
-    gap: $spacing-md;
+    gap: 0.3rem;
   }
   
   &__link {

@@ -7,18 +7,10 @@
   @include roulette-container;
 
   &__content {
-    background-image: var(--bg-image);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    @include roulette-background-content;
     @include roulette-page-content;
     padding: $spacing-xl;
     overflow: hidden;
-
-    @media (min-width: $desktop) {
-      background-size: cover;
-      background-position: bottom center;
-    }
   }
 
   &__main {
@@ -27,12 +19,12 @@
 
   &__icon {
     margin-bottom: $spacing-xl;
-    z-index: 1;
+    z-index: 3;
     margin: 0 auto;
     width: 200px;
     position: absolute;
-    bottom: -100px;
     right: -25px;
+    bottom: 0;
   }
 
   &__title {

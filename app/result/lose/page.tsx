@@ -8,7 +8,10 @@ export default function LosePage() {
     <div className={settings.classes.loseContainer}>
       <div
         className={settings.classes.lose.content}
-        style={{ '--bg-image': `url(${settings.images.backgroundImage})` } as React.CSSProperties}
+        style={{ 
+          '--bg-image-mobile': `url(${settings.images.backgroundImage})`,
+          '--bg-image-desktop': `url(${settings.images.backgroundDesktop})`
+        } as React.CSSProperties}
       >
         <div className={settings.classes.lose.main}>
           {/* Logo */}

@@ -96,6 +96,7 @@ export const settings = {
   images: {
     titleImage: "/images/logo.png",
     backgroundImage: "/images/background.png",
+    backgroundDesktop: "/images/background-desktop.jpg",
     rouletteWheel: "/images/roulette.png",
     pointer: "/images/pointer.png",
     play: "/images/play-btn.png",

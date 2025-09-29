@@ -13,15 +13,55 @@ export default function WinPage() {
     parentEmail: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
+    setSubmitError("");
 
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
+    try {
+      // Get the game ID from session storage
+      const gameId = sessionStorage.getItem('currentGameId');
+      if (!gameId) {
+        throw new Error('No game ID found. Please play again.');
+      }
 
-    // For demo purposes, just show success message
-    setIsSubmitted(true);
+      // Submit form data to API
+      const response = await fetch('/api/prize-claim', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          gameId,
+          childFirstName: formData.childFirstName,
+          childLastName: formData.childLastName,
+          parentEmail: formData.parentEmail,
+          sessionId: sessionStorage.getItem('sessionId'), // If you want to track sessions
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        console.log('Prize claim submitted:', data.submissionId);
+        // Clear the game ID from session storage
+        sessionStorage.removeItem('currentGameId');
+        setIsSubmitted(true);
+      } else {
+        throw new Error(data.error || 'Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitError(error instanceof Error ? error.message : 'Failed to submit form. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +77,10 @@ export default function WinPage() {
       <div className={settings.classes.winContainer}>
         <div
           className={settings.classes.win.content}
-          style={{ '--bg-image': `url(${settings.images.backgroundImage})` } as React.CSSProperties}
+          style={{ 
+            '--bg-image-mobile': `url(${settings.images.backgroundImage})`,
+            '--bg-image-desktop': `url(${settings.images.backgroundDesktop})`
+          } as React.CSSProperties}
         >
           <div className={settings.classes.win.success}>
             {/* Logo */}
@@ -79,7 +122,7 @@ export default function WinPage() {
     <div className={settings.classes.winContainer}>
       <div
         className={settings.classes.win.content}
-        style={{ '--bg-image': `url(${settings.images.backgroundImage})` } as React.CSSProperties}
+        style={{ '--bg-image-mobile': `url(${settings.images.backgroundImage})`, '--bg-image-desktop': `url(${settings.images.backgroundDesktop})` } as React.CSSProperties}
       >
         <div className={settings.classes.win.main}>
           {/* Logo */}
@@ -107,6 +150,19 @@ export default function WinPage() {
             <h2 className={settings.classes.win.formTitle}>
               {settings.content.win.formTitle}
             </h2>
+
+            {submitError && (
+              <div style={{ 
+                color: '#ff4444', 
+                marginBottom: '1rem', 
+                padding: '0.5rem', 
+                border: '1px solid #ff4444', 
+                borderRadius: '4px',
+                backgroundColor: '#fff5f5'
+              }}>
+                {submitError}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit}>
 
@@ -158,8 +214,13 @@ export default function WinPage() {
               <button
                 type="submit"
                 className={settings.classes.win.submitButton}
+                disabled={isSubmitting}
+                style={{
+                  opacity: isSubmitting ? 0.7 : 1,
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                }}
               >
-                {settings.content.win.submitButton}
+                {isSubmitting ? 'Envoi en cours...' : settings.content.win.submitButton}
               </button>
 
               <img

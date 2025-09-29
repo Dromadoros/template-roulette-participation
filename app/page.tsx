@@ -8,7 +8,10 @@ export default function Home() {
     <div className={settings.classes.container}>
       <div 
         className={settings.classes.home.content}
-        style={{ '--bg-image': `url(${settings.images.backgroundImage})` } as React.CSSProperties}
+        style={{ 
+          '--bg-image-mobile': `url(${settings.images.backgroundImage})`,
+          '--bg-image-desktop': `url(${settings.images.backgroundDesktop})`
+        } as React.CSSProperties}
       >
         <div className={settings.classes.home.main}>
           {/* Title Image */}

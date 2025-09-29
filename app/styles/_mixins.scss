@@ -15,6 +15,20 @@
   padding-top: $spacing-2xl * 2;
 }
 
+@mixin roulette-background-content {
+  background-image: var(--bg-image-mobile);
+  background-size: cover;
+  background-position: bottom center;
+  background-color: #7ECAE6;
+  
+  @media (min-width: $desktop) {
+    background-image: var(--bg-image-desktop);
+    background-size: 120% auto;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+  }
+}
+
 @mixin roulette-centered-content {
   text-align: center;
   max-width: 42rem;
@@ -99,7 +113,6 @@
   box-shadow: $shadow-lg;
   padding: $spacing-xl;
   padding-bottom: 100px;
-  overflow: hidden;
   position: relative;
   box-sizing: border-box;
 }
