@@ -67,7 +67,7 @@ export async function saveGamePlay(gameData: Omit<GamePlay, 'gameId' | 'timestam
     return gameId;
   } catch (error) {
     console.error('Error saving game play:', error);
-    throw new Error('Failed to save game play');
+    throw new Error(error.message || 'Failed to save game play');
   }
 }
 
