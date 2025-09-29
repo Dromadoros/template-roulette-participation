@@ -1,9 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { settings } from "@/lib/settings";
 import Footer from "@/components/Footer";
 
 export default function LosePage() {
+  const handleDownloadPDF = () => {
+    // Create a temporary anchor element to trigger the download
+    const link = document.createElement('a');
+    link.href = settings.pdf.coloringBook;
+    link.download = 'GAB-dessin-01.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <div className={settings.classes.loseContainer}>
       <div
@@ -44,12 +55,13 @@ export default function LosePage() {
 
             {/* Action Buttons */}
             <div className={settings.classes.lose.buttons}>
-              <Link
-                href="/"
+              <button
+                onClick={handleDownloadPDF}
                 className={settings.classes.lose.download}
+                type="button"
               >
                 {settings.content.lose.downloadButton}
-              </Link>
+              </button>
             </div>
           </div>
         </div>

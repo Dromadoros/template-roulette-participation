@@ -18,9 +18,9 @@ export default function WinPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (isSubmitting) return;
-    
+
     setIsSubmitting(true);
     setSubmitError("");
 
@@ -47,7 +47,7 @@ export default function WinPage() {
       });
 
       const data = await response.json();
-      
+
       if (data.success) {
         console.log('Prize claim submitted:', data.submissionId);
         // Clear the game ID from session storage
@@ -77,38 +77,32 @@ export default function WinPage() {
       <div className={settings.classes.winContainer}>
         <div
           className={settings.classes.win.content}
-          style={{ 
-            '--bg-image-mobile': `url(${settings.images.backgroundImage})`,
-            '--bg-image-desktop': `url(${settings.images.backgroundDesktop})`
-          } as React.CSSProperties}
+          style={{ '--bg-image-mobile': `url(${settings.images.backgroundImage})`, '--bg-image-desktop': `url(${settings.images.backgroundDesktop})` } as React.CSSProperties}
         >
           <div className={settings.classes.win.success}>
-            {/* Logo */}
-            <div className={settings.classes.game.logo}>
-              <Image
-                src={settings.images.titleImage}
-                alt={settings.title}
-                width={400}
-                height={80}
-                priority
-              />
+            <div className={settings.classes.win.main}>
+              {/* Logo */}
+              <div className={settings.classes.game.logo}>
+                <Image
+                  src={settings.images.titleImage}
+                  alt={settings.title}
+                  width={400}
+                  height={80}
+                  priority
+                />
+              </div>
+
+              {/* Prize Claim Form */}
+              <div className={settings.classes.win.form}>
+
+              <h1 className={settings.classes.win.successTitle}>
+                {settings.content.win.successTitle}
+              </h1>
+
+              <p className={settings.classes.win.successDescription}>
+                {settings.content.win.successDescription}
+              </p>
             </div>
-
-            <h1 className={settings.classes.win.successTitle}>
-              Thank You! 🎊
-            </h1>
-
-            <p className={settings.classes.win.successDescription}>
-              Your prize claim has been submitted successfully. You'll receive an email with further instructions.
-            </p>
-
-            <div className={settings.classes.win.successButtons}>
-              <Link
-                href="/"
-                className={settings.classes.win.successSecondary}
-              >
-                Go Home
-              </Link>
             </div>
           </div>
         </div>
@@ -152,11 +146,11 @@ export default function WinPage() {
             </h2>
 
             {submitError && (
-              <div style={{ 
-                color: '#ff4444', 
-                marginBottom: '1rem', 
-                padding: '0.5rem', 
-                border: '1px solid #ff4444', 
+              <div style={{
+                color: '#ff4444',
+                marginBottom: '1rem',
+                padding: '0.5rem',
+                border: '1px solid #ff4444',
                 borderRadius: '4px',
                 backgroundColor: '#fff5f5'
               }}>

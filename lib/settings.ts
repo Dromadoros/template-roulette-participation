@@ -114,6 +114,11 @@ export const settings = {
     reveal: "/audio/ding-reveal.wav",
   },
 
+  // PDF files (paths to PDF assets in /public/pdf folder)
+  pdf: {
+    coloringBook: "/pdf/GAB-dessin-01.pdf",
+  },
+
   // Text Content
   content: {
     intro: {
@@ -134,6 +139,9 @@ export const settings = {
       childLastNameLabel: "Nom",
       parentEmailLabel: "Adresse e-mail",
       submitButton: "Envoyer",
+      successTitle: "Merci beaucoup ! 🎉",
+      successDescription: "Votre demande de prix a été soumise avec succès. Vous recevrez un e-mail avec les instructions pour récupérer vos places de cinéma.",
+      goHomeButton: "Retour à l'accueil",
     },
     lose: {
       title: "C'est perdu !",
