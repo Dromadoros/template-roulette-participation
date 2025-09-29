@@ -3,12 +3,20 @@ import { DynamoDBDocumentClient, PutCommand, QueryCommand } from "@aws-sdk/lib-d
 import { v4 as uuidv4 } from 'uuid';
 
 // Initialize DynamoDB client
+console.log('DynamoDB Client Debug:', {
+  region: process.env.REGION,
+  hasAccessKey: !!process.env.DYNAMO_ACCESS_KEY_ID,
+  hasSecretKey: !!process.env.DYNAMO_SECRET_ACCESS_KEY,
+  accessKeyLength: process.env.DYNAMO_ACCESS_KEY_ID?.length,
+  secretKeyLength: process.env.DYNAMO_SECRET_ACCESS_KEY?.length,
+});
+
 const client = new DynamoDBClient({
   region: process.env.REGION || 'eu-central-1',
-  credentials: {
-    accessKeyId: process.env.ACCESS_KEY_ID!,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY!,
-  },
+  credentials: process.env.DYNAMO_ACCESS_KEY_ID && process.env.DYNAMO_SECRET_ACCESS_KEY ? {
+    accessKeyId: process.env.DYNAMO_ACCESS_KEY_ID,
+    secretAccessKey: process.env.DYNAMO_SECRET_ACCESS_KEY,
+  } : undefined,
 });
 
 const docClient = DynamoDBDocumentClient.from(client);
