@@ -8,7 +8,10 @@ export async function POST(request: NextRequest) {
       gameId, 
       childFirstName, 
       childLastName, 
-      parentEmail, 
+      parentEmail,
+      address,
+      postalCode,
+      phoneNumber,
       sessionId 
     } = body;
 
@@ -20,7 +23,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!childFirstName || !childLastName || !parentEmail) {
+    if (!childFirstName || !childLastName || !parentEmail || !address || !postalCode || !phoneNumber) {
       return NextResponse.json(
         { error: 'All form fields are required' },
         { status: 400 }
@@ -36,12 +39,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // French postal code validation (5 digits)
+    const postalCodeRegex = /^[0-9]{5}$/;
+    if (!postalCodeRegex.test(postalCode)) {
+      return NextResponse.json(
+        { error: 'Invalid French postal code format' },
+        { status: 400 }
+      );
+    }
+
+    // French phone number validation
+    const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+      return NextResponse.json(
+        { error: 'Invalid French phone number format' },
+        { status: 400 }
+      );
+    }
+
     // Save prize claim form to DynamoDB
     const submissionId = await savePrizeClaimForm({
       gameId,
       childFirstName: childFirstName.trim(),
       childLastName: childLastName.trim(),
       parentEmail: parentEmail.trim().toLowerCase(),
+      address: address.trim(),
+      postalCode: postalCode.trim(),
+      phoneNumber: phoneNumber.trim(),
       sessionId,
     });
 

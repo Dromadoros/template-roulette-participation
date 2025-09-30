@@ -40,6 +40,9 @@ export interface PrizeClaimForm {
   childFirstName: string;
   childLastName: string;
   parentEmail: string;
+  address: string;
+  postalCode: string;
+  phoneNumber: string;
   timestamp: string;
   sessionId?: string;
 }

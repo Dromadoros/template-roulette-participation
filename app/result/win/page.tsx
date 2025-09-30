@@ -11,6 +11,9 @@ export default function WinPage() {
     childLastName: "",
     childFirstName: "",
     parentEmail: "",
+    address: "",
+    postalCode: "",
+    phoneNumber: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,6 +45,9 @@ export default function WinPage() {
           childFirstName: formData.childFirstName,
           childLastName: formData.childLastName,
           parentEmail: formData.parentEmail,
+          address: formData.address,
+          postalCode: formData.postalCode,
+          phoneNumber: formData.phoneNumber,
           sessionId: sessionStorage.getItem('sessionId'), // If you want to track sessions
         }),
       });
@@ -201,6 +207,55 @@ export default function WinPage() {
                   value={formData.parentEmail}
                   onChange={handleInputChange}
                   required
+                  className={settings.classes.win.input}
+                />
+              </div>
+
+              <div className={settings.classes.win.formGroup}>
+                <label htmlFor="address" className={settings.classes.win.label}>
+                  {settings.content.win.addressLabel}
+                </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                  required
+                  className={settings.classes.win.input}
+                />
+              </div>
+
+              <div className={settings.classes.win.formGroup}>
+                <label htmlFor="postalCode" className={settings.classes.win.label}>
+                  {settings.content.win.postalCodeLabel}
+                </label>
+                <input
+                  type="text"
+                  id="postalCode"
+                  name="postalCode"
+                  value={formData.postalCode}
+                  onChange={handleInputChange}
+                  required
+                  pattern="[0-9]{5}"
+                  title="Code postal français (5 chiffres)"
+                  className={settings.classes.win.input}
+                />
+              </div>
+
+              <div className={settings.classes.win.formGroup}>
+                <label htmlFor="phoneNumber" className={settings.classes.win.label}>
+                  {settings.content.win.phoneNumberLabel}
+                </label>
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleInputChange}
+                  required
+                  pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$"
+                  title="Numéro de téléphone français (ex: 01 23 45 67 89)"
                   className={settings.classes.win.input}
                 />
               </div>
