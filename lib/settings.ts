@@ -176,9 +176,9 @@ export const settings = {
       rulesConditionsUrl: "/pdf/game_rules_leclerc.pdf",
       rulesText: "Le règlement complet du présent jeu-concours est disponible et consultable gratuitement à tout moment dans l'application en cliquant ici",
       rulesAcceptance: "La participation au jeu implique l'acceptation sans réserve du présent règlement.",
-      leclercStoreLabel: "Produits Leclerc",
+      leclercStoreLabel: "Produits E.Leclerc",
       leclercStoreUrl: "https://www.e.leclerc/",
-      universalLabel: "Site officiel Universal",
+      universalLabel: "Universal Pictures",
       universalUrl: "https://www.universalpictures.fr",
       copyright: "DREAMWORKS GABBY'S DOLLHOUSE © DREAMWORKS ANIMATION LLC. ALL RIGHTS RESERVED.",
     }
