@@ -21,6 +21,8 @@ export default function LosePage() {
   };
 
   const handleDownloadPDF = () => {
+    if (!randomColoring) return;
+    
     // Create a temporary anchor element to trigger the download
     const link = document.createElement('a');
     link.href = randomColoring.pdf;
