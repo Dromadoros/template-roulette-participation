@@ -18,24 +18,29 @@ export default function Footer() {
           {/* Rules & Conditions Link */}
           <div className={settings.classes.footer.links}>
             <Link
-              href={settings.content.menu.rulesConditionsUrl}
+              href='/rules'
               className={settings.classes.footer.link}
+              title={settings.content.menu.rulesText}
             >
               {settings.content.menu.rulesConditionsLabel}
             </Link>
             <span className={settings.classes.footer.separator}>|</span>
             <Link
-              href="#"
+              href={settings.content.menu.leclercStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className={settings.classes.footer.link}
             >
-              Link 2
+              {settings.content.menu.leclercStoreLabel}
             </Link>
             <span className={settings.classes.footer.separator}>|</span>
             <Link
-              href="#"
+              href={settings.content.menu.universalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className={settings.classes.footer.link}
             >
-              Link 3
+              {settings.content.menu.universalLabel}
             </Link>
           </div>
 

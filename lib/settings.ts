@@ -105,7 +105,16 @@ export const settings = {
     footerBackground: "/images/footer-bg.png",
     characters: "/images/persos-ensemble.png",
     sparkles: "/images/sparkles.png",
-    drawingDownload: "/images/dessin-fail.png",
+    // Coloring drawings - array of all available drawings
+    drawings: [
+      "/images/GAB-dessin-01.png",
+      "/images/GAB-dessin-02.jpg",
+      "/images/GAB-dessin-03.jpg",
+      "/images/GAB-dessin-04.jpg",
+      "/images/GAB-dessin-05.jpg",
+      "/images/GAB-dessin-06.jpg",
+      "/images/GAB-dessin-07.jpg",
+    ],
   },
 
   // Audio files (paths to audio assets in /public/audio folder)
@@ -116,7 +125,16 @@ export const settings = {
 
   // PDF files (paths to PDF assets in /public/pdf folder)
   pdf: {
-    coloringBook: "/pdf/GAB-dessin-01.pdf",
+    // Coloring books - array of all available PDFs
+    coloringBooks: [
+      "/pdf/GAB-dessin-01.pdf",
+      "/pdf/GAB-dessin-02.pdf",
+      "/pdf/GAB-dessin-03.pdf",
+      "/pdf/GAB-dessin-04.pdf",
+      "/pdf/GAB-dessin-05.pdf",
+      "/pdf/GAB-dessin-06.pdf",
+      "/pdf/GAB-dessin-07.pdf",
+    ],
   },
 
   // Text Content
@@ -154,8 +172,14 @@ export const settings = {
       downloadButton: 'Télécharger',
     },
     menu: {
-      rulesConditionsLabel: "Règles & Conditions",
-      rulesConditionsUrl: "/rules",
+      rulesConditionsLabel: "Règlement du jeu-concours",
+      rulesConditionsUrl: "/pdf/game_rules_leclerc.pdf",
+      rulesText: "Le règlement complet du présent jeu-concours est disponible et consultable gratuitement à tout moment dans l'application en cliquant ici",
+      rulesAcceptance: "La participation au jeu implique l'acceptation sans réserve du présent règlement.",
+      leclercStoreLabel: "Produits Leclerc",
+      leclercStoreUrl: "https://www.e.leclerc/",
+      universalLabel: "Site officiel Universal",
+      universalUrl: "https://www.universalpictures.fr",
       copyright: "DREAMWORKS GABBY'S DOLLHOUSE © DREAMWORKS ANIMATION LLC. ALL RIGHTS RESERVED.",
     }
   },
@@ -179,3 +203,14 @@ export const settings = {
 } as const;
 
 export type Settings = typeof settings;
+
+// Function to get a random coloring book
+export function getRandomColoring() {
+  const randomIndex = Math.floor(Math.random() * settings.images.drawings.length);
+  console.log(randomIndex)
+  return {
+    image: settings.images.drawings[randomIndex],
+    pdf: settings.pdf.coloringBooks[randomIndex],
+    filename: `GAB-dessin-${String(randomIndex + 1).padStart(2, '0')}.pdf`
+  };
+}
