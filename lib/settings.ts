@@ -160,7 +160,7 @@ export const settings = {
       postalCodeLabel: "Code postal",
       phoneNumberLabel: "Numéro de téléphone",
       submitButton: "Envoyer",
-      successTitle: "Merci beaucoup ! 🎉",
+      successTitle: "Merci !",
       successDescription: "Votre demande de prix a été soumise avec succès. Vous recevrez un e-mail avec les instructions pour récupérer vos places de cinéma.",
       goHomeButton: "Retour à l'accueil",
     },
