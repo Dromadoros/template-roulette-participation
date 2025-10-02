@@ -151,7 +151,7 @@ export const settings = {
     },
     win: {
       title: "Félicitations!",
-      description: "Vous avez gagné vos places de cinéma pour Gabby et la maison magique : le film!",
+      description: "Tu as gagné deux places de cinéma pour Gaby et la Maison Magique !",
       formTitle: "Formulaire de Réclamation de Prix",
       childFirstNameLabel: "Prénom",
       childLastNameLabel: "Nom",
@@ -165,8 +165,8 @@ export const settings = {
       goHomeButton: "Retour à l'accueil",
     },
     lose: {
-      title: "C'est perdu !",
-      description: "Mais voici un coloriage à télécharger pour colorier à la maison.",
+      title: "Tu as perdu mais ce n’est pas grave !",
+      description: "Télécharge gratuitement un coloriage Gaby et la Maison Magique !",
       tryAgainButton: "Réessayer",
       goHomeButton: "Accueil",
       downloadButton: 'Télécharger',

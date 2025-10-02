@@ -30,6 +30,7 @@
   &__title {
     @include gabby-title;
     color: $gabby-primary;
+    font-size: 1.6rem;
   }
 
   &__description {
