@@ -150,7 +150,7 @@ export const settings = {
       spinning: "Spinning...",
     },
     win: {
-      title: "Félicitations!",
+      title: "Félicitations !",
       description: "Tu as gagné deux places de cinéma pour Gaby et la Maison Magique !",
       formTitle: "Formulaire de Réclamation de Prix",
       childFirstNameLabel: "Prénom",
@@ -177,9 +177,9 @@ export const settings = {
       rulesText: "Le règlement complet du présent jeu-concours est disponible et consultable gratuitement à tout moment dans l'application en cliquant ici",
       rulesAcceptance: "La participation au jeu implique l'acceptation sans réserve du présent règlement.",
       leclercStoreLabel: "Produits E.Leclerc",
-      leclercStoreUrl: "https://www.e.leclerc/",
+      leclercStoreUrl: "https://www.e.leclerc/recherche?q=gabby%20et%20la%20maison%20magique",
       universalLabel: "Universal Pictures",
-      universalUrl: "https://www.universalpictures.fr",
+      universalUrl: "https://www.youtube.com/watch?v=lBI0EjXB98o",
       copyright: "DREAMWORKS GABBY'S DOLLHOUSE © DREAMWORKS ANIMATION LLC. ALL RIGHTS RESERVED.",
     }
   },
