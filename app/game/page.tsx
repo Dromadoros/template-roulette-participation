@@ -119,6 +119,8 @@ export default function GamePage() {
       isWin = false;
     }
 
+    isWin = false; // Force lose for testing
+
     const randomizedSegments = Object.entries(settings.game.wheelSegments).sort(() => Math.random() - 0.5);
 
     const choosenSegment = randomizedSegments.find(([index, value]) => isWin === value)?.[0] || 0;
